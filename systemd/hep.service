@@ -1,0 +1,11 @@
+[Unit]
+Description=HID Event Processor
+
+[Service]
+Type=simple
+Restart=always
+EnvironmentFile=%E/systemd/hep.conf
+ExecStart=sh -c "${HEP_PATH}"
+
+[Install]
+WantedBy=default.target

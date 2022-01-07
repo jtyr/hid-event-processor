@@ -1,0 +1,51 @@
+---
+
+# Logitech Pro Gaming Keyboard
+- device:
+    vendor: 0x46d
+    product: 0xc339
+    version: 0x111
+  keys:
+    # Play/Pause key down
+    - type: 1
+      code: 164
+      value: 1
+      command: kcalc
+      background: true
+    # FastForward key down
+    - type: 1
+      code: 163
+      value: 1
+      command: drawio
+      background: true
+
+# Bose 700 ACM Headphones
+- device:
+    vendor: 0x5a7
+    product: 0xa310
+    version: 0x111
+  keys:
+    # MSC_SCAN on KEY_MICMUTE longpress
+    - type: 4
+      code: 4
+      value: b002f
+      command:
+        - ~/bin/bose.sh
+        - toggle
+        - "{{ device.path }}"
+    # MSC_SCAN on BTN_0 press
+    - type: 4
+      code: 4
+      value: ff990004
+      command:
+        - ~/bin/bose.sh
+        - toggle
+        - "{{ device[cap=17,subcap=7].path }}"
+    # MSC_SCAN on KEY_PLAY (hangup)
+    - type: 4
+      code: 4
+      value: c00b0
+      command:
+        - ~/bin/bose.sh
+        - hangup
+        - "{{ device[cap=17,subcap=7].path }}"

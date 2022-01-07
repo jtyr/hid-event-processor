@@ -1,0 +1,28 @@
+---
+
+list(include('config'), min=1)
+
+---
+
+config:
+  device:
+    vendor: any(include('device_number'), include('device_any'), required=False)
+    product: any(include('device_number'), include('device_any'), required=False)
+    version: any(include('device_number'), include('device_any'), required=False)
+  keys: list(include('keys'), min=1)
+
+device_number: int(min=0, max=65535)
+device_any: str(equals='any')
+
+keys:
+  type: any(include('key_int'), include('key_hex'), required=False)
+  code: any(include('key_int'), include('key_hex'), required=False)
+  value: any(include('key_int'), include('key_hex'), required=False)
+  command: any(include('command_array'), include('command_str'))
+  background: bool(required=False)
+
+key_int: int(min=0, max=65535)
+key_hex: regex('^[0-9a-f]+$')
+
+command_array: list(include('command_str'), min=1)
+command_str: str(str(matches='^.[^\s]+$'), min=1)

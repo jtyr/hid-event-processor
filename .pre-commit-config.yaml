@@ -1,0 +1,49 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-yaml
+        args:
+          - --allow-multiple-documents
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: trailing-whitespace
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.30.0
+    hooks:
+      - id: markdownlint
+        name: Markdownlint
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.5
+    hooks:
+      - id: shellcheck
+        name: Shellcheck
+
+  - repo: https://github.com/psf/black
+    rev: 21.12b0
+    hooks:
+      - id: black
+        name: Python black code formatter
+        language_version: python3
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+        name: Python flake8
+        args:
+          - --max-line-length=88
+          - --ignore=E501,W503
+
+  - repo: https://github.com/k-ogawa-1988/yamale-pre-commit
+    rev: v0.0.2
+    hooks:
+      - id: yamale-validate
+        name: YAML schema validation - ns_validator
+        args:
+          - --schema=../schema/config.yaml
+        files: "^config\\.yaml$"
