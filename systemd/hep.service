@@ -8,4 +8,4 @@ EnvironmentFile=%E/systemd/hep.conf
 ExecStart=sh -c "${HEP_PATH}"
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

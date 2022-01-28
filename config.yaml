@@ -18,6 +18,14 @@
       value: 1
       command: drawio
       background: true
+    # Pause/Break key
+    - type: 1
+      code: 119
+      value: 1
+      command:
+        - ~/bin/bose.sh
+        - toggle
+        - "{{ device[cap=17,subcap=7].path }}"
 
 # Bose 700 ACM Headphones
 - device:
